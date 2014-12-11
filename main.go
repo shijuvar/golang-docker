@@ -21,13 +21,13 @@ func helloHandler(res http.ResponseWriter, req *http.Request) {
 		<title>Hello Gopher</title>
 	</head>
 	<body>
-		Hello Gopher!
+		It is really awesome that Docker and Kubernetes are written with Go!
 	</body>
 </html>`,
 	)
 }
 func defaultHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Welcome to Go web apps!")
+	fmt.Fprintf(w, "Go web app powered by Docker")
 }
 func main() {
 	http.HandleFunc("/", defaultHandler)
