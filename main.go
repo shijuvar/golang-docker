@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"io"
 )
 
@@ -21,7 +20,8 @@ func helloHandler(res http.ResponseWriter, req *http.Request) {
 		<title>Hello Gopher</title>
 	</head>
 	<body>
-		It is really awesome that Docker and Kubernetes are written with Go!
+		Hello Gopher </br>
+		It is really awesome that both Docker and Kubernetes are written with Go!
 	</body>
 </html>`,
 	)
@@ -32,19 +32,10 @@ func defaultHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", defaultHandler)
 	http.HandleFunc("/hello", helloHandler)
-	err := http.ListenAndServe(getPort(),nil)
+	err := http.ListenAndServe(":8080",nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 		return
 	}
 }
-// Get the Port from the environment
-func getPort() string {
-	var port = os.Getenv("PORT")
-	// Set a default port if there is nothing in the hosting environment
-	if port == "" {
-		port = "8080"
-	}
-	fmt.Println("listening at port: " + port)
-	return ":" + port
-}
+
