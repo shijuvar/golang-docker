@@ -7,7 +7,7 @@ ADD . /go/src/github.com/shijuvar/golang-docker
 # Build the golang-docker command inside the container.
 RUN go install github.com/shijuvar/golang-docker
 
-# Run the outyet command by default when the container starts.
+# Run the golang-docke command by default when the container starts.
 ENTRYPOINT /go/bin/golang-docker
 
 # http server listens on port 8080.
