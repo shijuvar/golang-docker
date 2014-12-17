@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net/http"
-	"io"
 )
 
 func helloHandler(res http.ResponseWriter, req *http.Request) {
@@ -21,7 +21,7 @@ func helloHandler(res http.ResponseWriter, req *http.Request) {
 	</head>
 	<body>
 		Hello Gopher </br>
-		It is really awesome that both Docker and Kubernetes are written with Go!
+		It is really awesome that both Docker and Kubernetes are written in Go!
 	</body>
 </html>`,
 	)
@@ -32,10 +32,9 @@ func defaultHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", defaultHandler)
 	http.HandleFunc("/hello", helloHandler)
-	err := http.ListenAndServe(":8080",nil)
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 		return
 	}
 }
-
